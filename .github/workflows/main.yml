@@ -20,18 +20,17 @@ jobs:
 
           # Substitution message variables to message
           BODY=$(curl --silent -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/smartworldteam/art/main/stubs/messages/release.md)
-          echo "${BODY}"
           BODY="${BODY/\$REPOSITORY_NAME/$REPOSITORY_NAME}"
           BODY="${BODY/\$REPOSITORY_URL/$REPOSITORY_URL}"
           BODY="${BODY/\$RELEASE_URL/$RELEASE_URL}"
           BODY="${BODY/\$VERSION/$VERSION}"
+          BODY="${BODY//'%'/'%25'}"
+          BODY="${BODY//$'\n'/'%0A'}"
+          BODY="${BODY//$'\r'/'%0D'}"
           echo "${BODY}"
 
           # Set output `body`
           echo "::set-output name=body::$BODY"
-
-      - name: test
-        run: echo ${{ steps.message-metadata.outputs.body }}
 
       - uses: actions/checkout@master
       - name: send custom message with args
