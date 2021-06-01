@@ -30,12 +30,14 @@ jobs:
           # Set output `body`
           echo "::set-output name=body::$BODY"
 
+      - name: test
+        run: echo ${{ steps.message-metadata.outputs.body }}
+
       - uses: actions/checkout@master
       - name: send custom message with args
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ steps.message-metadata.outputs.body }}
+          message: ${{ steps.message-metadata.outputs.body }}
           format: markdown
