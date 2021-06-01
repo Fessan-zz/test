@@ -14,7 +14,7 @@ jobs:
           MESSAGE=$(curl --silent https://raw.githubusercontent.com/smartworldteam/art/main/stubs/messages/release.md)
           VERSION="${GITHUB_REF##*/}"
           REPOSITORY_NAME="${GITHUB_REPOSITORY}"
-          $REPOSITORY_URL="${GITHUB_SERVER_URL@Q}/${GITHUB_REPOSITORY@Q}"
+          REPOSITORY_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
           MESSAGE="${MESSAGE/\$REPOSITORY_NAME/$REPOSITORY_NAME}"
           MESSAGE="${MESSAGE/\$REPOSITORY_URL/$REPOSITORY_URL}"
           MESSAGE="${MESSAGE/\$VERSION/$VERSION}"
