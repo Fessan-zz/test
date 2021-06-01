@@ -24,6 +24,7 @@ jobs:
           BODY="${BODY/\$REPOSITORY_URL/$REPOSITORY_URL}"
           BODY="${BODY/\$RELEASE_URL/$RELEASE_URL}"
           BODY="${BODY/\$VERSION/$VERSION}"
+          BODY="${BODY/\$CHANGELOG_URL/$CHANGELOG_URL}"
           BODY="${BODY//'%'/'%25'}"
           BODY="${BODY//$'\n'/'%0A'}"
           BODY="${BODY//$'\r'/'%0D'}"
