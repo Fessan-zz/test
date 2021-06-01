@@ -20,10 +20,12 @@ jobs:
 
           # Substitution message variables to message
           BODY=$(curl --silent -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/smartworldteam/art/main/stubs/messages/release.md)
+          echo "${BODY}"
           BODY="${BODY/\$REPOSITORY_NAME/$REPOSITORY_NAME}"
           BODY="${BODY/\$REPOSITORY_URL/$REPOSITORY_URL}"
           BODY="${BODY/\$RELEASE_URL/$RELEASE_URL}"
           BODY="${BODY/\$VERSION/$VERSION}"
+          echo "${BODY}"
 
           # Set output `body`
           echo "::set-output name=body::$BODY"
