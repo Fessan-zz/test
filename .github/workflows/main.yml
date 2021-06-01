@@ -19,7 +19,7 @@ jobs:
           CHANGELOG_URL="${REPOSITORY_URL}/blob/main/CHANGELOG.md"
 
           # Substitution message variables to message
-          BODY=$(curl --silent https://raw.githubusercontent.com/smartworldteam/art/main/stubs/messages/release.md)
+          BODY=$(curl --silent -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/smartworldteam/art/main/stubs/messages/release.md)
           BODY="${BODY/\$REPOSITORY_NAME/$REPOSITORY_NAME}"
           BODY="${BODY/\$REPOSITORY_URL/$REPOSITORY_URL}"
           BODY="${BODY/\$RELEASE_URL/$RELEASE_URL}"
